@@ -1,0 +1,17 @@
+version: '3'
+services:
+
+ jenkins:
+  image: jenkins-local:lts
+  build:
+   context: .
+   args:
+    hostDockerGroup: "130"
+  environment:
+   - "JAVA_OPTS=-Dhudson.footerURL=https://x3ss.cc/"
+  volumes:
+   - "./jenkins_home/:/var/jenkins_home/"
+   - "/run/docker.sock:/run/docker.sock"
+  ports:
+   - "8080:8080"
+   - "50000:50000"
